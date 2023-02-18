@@ -7,7 +7,7 @@
 void swap(int&, int&);
 void randomFill(int*, int, int, int);
 void showEl(int*, int);
-
+void fillNu(int*, int, int);
 
 #endif /*_arraywork_hpp_*/
 

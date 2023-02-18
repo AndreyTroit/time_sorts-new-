@@ -22,3 +22,8 @@ void showEl(int* ar, int size){
         cout << '\n' << endl;
 }
 
+void fillNu(int* ar, int size, int el){
+	for(int i = 0; i < size; i++){
+		ar[i] = el;
+	}
+}

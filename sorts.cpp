@@ -107,21 +107,22 @@ void quickSort(int* ar, int size) {
         quickSort(&ar[left], size - left);
     }
 }
-void count_sort(int *ar, int size, int min, int max){
-    int null_ar[max];
-    for (int i = min; i <= max; i++){
-        null_ar[i] = 0;
-    }
 
-    for (int i = 0; i < size; i++){
-        null_ar[ar[i]]++;
-    }
-
-    int k = 0;
-    for (int i = min; i <= max; i++){
-        for (int j = k; j < k + null_ar[i]; j++){
-            ar[j] = i;
+void countSort(int* ar, int size, int minel, int maxel){
+        int numMass[maxel-minel];
+	fillNu(numMass, maxel-minel, 0);
+        for(int i = 0; i <= maxel-minel; i++){
+                for(int j = 0; j < size; j++){
+                        if(ar[j] == i + minel){
+                                numMass[i] += 1;
+                        }
+                }
         }
-        k += null_ar[i];
-    }
+	int count = 0;
+        for (int i = 0; i < maxel-minel; i++){
+		for (int j = 0; j < numMass[i]; j++){
+			ar[count] = i + minel;
+			count++;
+		}
+	}
 }

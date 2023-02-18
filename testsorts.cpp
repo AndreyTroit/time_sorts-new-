@@ -16,299 +16,156 @@ void testTime(){
 	int minel = 0;
 	int maxel = 999;
 	int ar[] = {};
-	{
+	int arStep[7] = {100, 250, 1000, 5000, 10000, 100000, 1000000};
+	int arMin[7] = {100, 500, 1000, 10000, 100000, 200000, 1000000};
+	int arMax[7] = {500, 1000, 10000, 100000, 200000, 1000000, 11000000};
+	for (int i = 0; i < 7; i++){
 		int size = 0;
-		int min = 100;
-		int max = 500;
-		int step = 100;
-		while (size < max/min){
-			if Bubble == true{	
-				int* ar = new int[step*(size+1)];
-				randomFill(ar, size * 100 + step, minel, maxel);
+		int min = arMin[i];
+		int max = arMax[i];
+		int step = arStep[i];
+		while (size < (max-min)/step){
+			int size_ar = (size + (min/step)) * step ;
+			std::cout << size_ar;
+			if (size_ar != 10000000){
+				std::cout << '\t';
+			}
+
+			if (Bubble == true){	
+				int* ar = new int[size_ar];
+				randomFill(ar, size_ar, minel, maxel);
 
 				std::chrono::time_point<std::chrono::high_resolution_clock> start;
 				start = std::chrono::high_resolution_clock::now();
 
-				bubbleSort(ar, size * 100 + step);
+				bubbleSort(ar, size_ar);
 				delete [] ar;
 			
 			        std::chrono::time_point<std::chrono::high_resolution_clock> end;
         			end = std::chrono::high_resolution_clock::now();
         			std::chrono::duration<double> diff = end - start;
-        			std::cout << size * 100 << '\t' << diff.count() << '\t' << std::endl;
+        			std::cout << diff.count() << '\t';
 				if (diff.count() > 60){
 					Bubble = false;
-					break;
 				}	
 			}
+			else {
+				std::cout << "time_limit" << '\t';
+			}
 
-			if Selection == true{	
-				int* ar = new int[step*(size+1)];
-				randomFill(ar, size * 100 + step, minel, maxel);
+			if (Selection == true){	
+				int* ar = new int[size_ar];
+				randomFill(ar, size_ar, minel, maxel);
 
 				std::chrono::time_point<std::chrono::high_resolution_clock> start;
 				start = std::chrono::high_resolution_clock::now();
 
-				selectionSort(ar, size * 100 + step);
+				selectionSort(ar, size_ar);
 				delete [] ar;
 			
 			        std::chrono::time_point<std::chrono::high_resolution_clock> end;
         			end = std::chrono::high_resolution_clock::now();
         			std::chrono::duration<double> diff = end - start;
-        			std::cout << size * 100 << '\t' << diff.count() << '\t' << std::endl;
+        			std::cout << diff.count() << '\t';
 				if (diff.count() > 60){
 					Selection = false;
-					break;
 				}	
 			}
+			else {
+				std::cout << "time_limit" << '\t';
+			}
 
-			if Count == true{	
-				int* ar = new int[step*(size+1)];
-				randomFill(ar, size * 100 + step, minel, maxel);
+			if (Count == true){	
+				int* ar = new int[size_ar];
+				randomFill(ar, size_ar, minel, maxel);
 
 				std::chrono::time_point<std::chrono::high_resolution_clock> start;
 				start = std::chrono::high_resolution_clock::now();
 
-				quickSort(ar, size * 100 + step);
+				countSort(ar, size_ar, minel, maxel);
 				delete [] ar;
 			
 			        std::chrono::time_point<std::chrono::high_resolution_clock> end;
         			end = std::chrono::high_resolution_clock::now();
         			std::chrono::duration<double> diff = end - start;
-        			std::cout << size * 100 << '\t' << diff.count() << '\t' << std::endl;
+        			std::cout << diff.count() << '\t';
 				if (diff.count() > 60){
 					Count = false;
-					break;
 				}	
 			}
+			else {
+				std::cout << "time_limit" << '\t';
+			}
 
-			if Insertion == true{	
-				int* ar = new int[step*(size+1)];
-				randomFill(ar, size * 100 + step, minel, maxel);
+			if (Insertion == true){	
+				int* ar = new int[size_ar];
+				randomFill(ar, size_ar, minel, maxel);
 
 				std::chrono::time_point<std::chrono::high_resolution_clock> start;
 				start = std::chrono::high_resolution_clock::now();
 
-				insertionSort(ar, size * 100 + step);
+				insertionSort(ar, size_ar);
 				delete [] ar;
 			
 			        std::chrono::time_point<std::chrono::high_resolution_clock> end;
         			end = std::chrono::high_resolution_clock::now();
         			std::chrono::duration<double> diff = end - start;
-        			std::cout << size * 100 << '\t' << diff.count() << '\t' << std::endl;
+        			std::cout << diff.count() << '\t';
 				if (diff.count() > 60){
 					Insertion = false;
-					break;
 				}	
 			}
+			else {
+				std::cout << "time_limit" << '\t';
+			}
 
-			if Quick == true{	
-				int* ar = new int[step*(size+1)];
-				randomFill(ar, size * 100 + step, minel, maxel);
+			if (Quick == true){	
+				int* ar = new int[size_ar];
+				randomFill(ar, size_ar, minel, maxel);
 
 				std::chrono::time_point<std::chrono::high_resolution_clock> start;
 				start = std::chrono::high_resolution_clock::now();
 
-				quickSort(ar, size * 100 + step);
+				quickSort(ar, size_ar);
 				delete [] ar;
 			
 			        std::chrono::time_point<std::chrono::high_resolution_clock> end;
         			end = std::chrono::high_resolution_clock::now();
         			std::chrono::duration<double> diff = end - start;
-        			std::cout << size * 100 << '\t' << diff.count() << '\t' << std::endl;
+        			std::cout << diff.count() << '\t';
 				if (diff.count() > 60){
 					Quick = false;
-					break;
 				}	
 			}
+			else {
+				std::cout << "time_limit" << '\t';
+			}
 
-			if Merge == true{	
-				int* ar = new int[step*(size+1)];
-				randomFill(ar, size * 100 + step, minel, maxel);
+			if (Merge == true){	
+				int* ar = new int[size_ar];
+				randomFill(ar, size_ar, minel, maxel);
 
 				std::chrono::time_point<std::chrono::high_resolution_clock> start;
 				start = std::chrono::high_resolution_clock::now();
 
-				mergeSort(ar, size * 100 + step);
+				mergeSort(ar, size_ar);
 				delete [] ar;
 			
 			        std::chrono::time_point<std::chrono::high_resolution_clock> end;
         			end = std::chrono::high_resolution_clock::now();
         			std::chrono::duration<double> diff = end - start;
-        			std::cout << size * 100 << '\t' << diff.count() << '\t' << std::endl;
+        			std::cout << diff.count() << '\t';
 				if (diff.count() > 60){
 					Merge = false;
-					break;
 				}	
 			}
+			else {
+				std::cout << "time_limit" << '\t';
+			}
+
+			size++;
+			std::cout << std::endl;
 
 		}
-	}
-
-	if (flag == true){
-	{
-                int size = 0;
-                int min = 500;
-                int max = 1000;
-                int step = 250;
-                while (size < max/min){
-                        int* ar = new int[step*(size+2)];
-                        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-                        start = std::chrono::high_resolution_clock::now();
-
-                        randomFill(ar, size * 100 + step, minel, maxel);
-                        bubbleSort(ar, size * 100 + step);
-                        delete [] ar;
-                        size++;
-
-                        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-                        end = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = end - start;
-                        std::cout << (size+1) * 250 << '\t' << diff.count() << '\t' << std::endl;
-			if (diff.count() > 60){
-                                flag = false;
-				break;
-                        }
-		}
-        }
-	}
-	if (flag == true){
-	{
-                int size = 0;
-                int min = 1000;
-                int max = 10000;
-                int step = 1000;
-                while (size < max/min){
-                        int* ar = new int[step*(size+1)];
-                        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-                        start = std::chrono::high_resolution_clock::now();
-
-                        randomFill(ar, size * 100 + step, minel, maxel);
-                        bubbleSort(ar, size * 100 + step);
-                        delete [] ar;
-                        size++;
-
-                        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-                        end = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = end - start;
-                        std::cout << (size) * 1000 << '\t' << diff.count() << '\t' << std::endl;
-			if (diff.count() > 60){
-                                flag = false;
-				break;
-                        }
-
-                }
-        }
-	}
-	if (flag == true){
-	{
-                int size = 0;
-                int min = 10000;
-                int max = 100000;
-                int step = 5000;
-                while (size < (max-min)/step){
-                        int* ar = new int[step*(size+2)];
-                        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-                        start = std::chrono::high_resolution_clock::now();
-
-                        randomFill(ar, size * 100 + step, minel, maxel);
-                        bubbleSort(ar, size * 100 + step);
-                        delete [] ar;
-                        size++;
-
-                        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-                        end = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = end - start;
-                        std::cout << (size+1) * step << '\t' << diff.count() << '\t' << std::endl;
-                        if (diff.count() > 60){
-                                flag = false;
-				break;
-                        }
-
-		}
-        }
-	}
-	if (flag == true){
-	{
-                int size = 0;
-                int min = 100000;
-                int max = 200000;
-                int step = 10000;
-                while (size < (max-min)/step){
-                        int* ar = new int[step*(size+10)];
-                        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-                        start = std::chrono::high_resolution_clock::now();
-
-                        randomFill(ar, size * 100 + step, minel, maxel);
-                        bubbleSort(ar, size * 100 + step);
-                        delete [] ar;
-                        size++;
-
-                        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-                        end = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = end - start;
-                        std::cout << (size+9) * step << '\t' << diff.count() << '\t' << std::endl;
-                        if (diff.count() > 60){
-                                flag = false;
-				break;
-                        }
-		}
-        }
-	}
-	if (flag == true){
-	{
-                int size = 0;
-                int min = 200000;
-                int max = 1000000;
-                int step = 100000;
-                while (size < (max-min)/step){
-                        int* ar = new int[step*(size+2)];
-                        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-                        start = std::chrono::high_resolution_clock::now();
-
-                        randomFill(ar, size * 100 + step, minel, maxel);
-                        bubbleSort(ar, size * 100 + step);
-                        delete [] ar;
-                        size++;
-
-                        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-                        end = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = end - start;
-                        std::cout << (size+1) * step << '\t' << diff.count() << '\t' << std::endl;
-			if (diff.count() > 60){
-                                flag = false;
-				break;
-                        }
-
-		}
-        }
-	}
-	if (flag == true){
-	{
-                int size = 0;
-                int min = 1000000;
-                int max = 10000000;
-                int step = 1000000;
-                while (size < max/min){
-                        int* ar = new int[step*(size+1)];
-                        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-                        start = std::chrono::high_resolution_clock::now();
-
-                        randomFill(ar, size * 100 + step, minel, maxel);
-                        bubbleSort(ar, size * 100 + step);
-                        delete [] ar;
-                        size++;
-
-                        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-                        end = std::chrono::high_resolution_clock::now();
-                        std::chrono::duration<double> diff = end - start;
-                        std::cout << size * step << '\t' << diff.count() << '\t' << std::endl;
-			if (diff.count() > 60){
-                                flag = false;
-				break;
-                        }
-
-		}
-        }
 	}
 }
