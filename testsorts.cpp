@@ -166,4 +166,5 @@ void testTime(){
 
 		}
 	}
+	fclose(f);
 }
