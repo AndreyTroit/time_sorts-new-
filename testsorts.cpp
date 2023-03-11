@@ -16,14 +16,12 @@ void testTime(){
 	int minel = 0;
 	int maxel = 999;
 	int ar[] = {};
-	int arStep[7] = {100, 250, 1000, 5000, 10000, 100000, 1000000};
-	int arMin[7] = {100, 500, 1000, 10000, 100000, 200000, 1000000};
-	int arMax[7] = {500, 1000, 10000, 100000, 200000, 1000000, 11000000};
-	for (int i = 0; i < 7; i++){
-		int size = 0;
-		int min = arMin[i];
-		int max = arMax[i];
-		int step = arStep[i];
+	FILE* f;                                                                    
+        f = fopen("steps.txt", "r");                                                
+        for (int i = 0; i < 7; i++){                                                
+          int size = 0;                                                           
+          int min, max, step;                                                     
+          int temp = fscanf(f, "%d\t%d\t%d\t", &step, &min, &max);
 		while (size < (max-min)/step){
 			int size_ar = (size + (min/step)) * step ;
 			std::cout << size_ar;
